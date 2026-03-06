@@ -316,10 +316,26 @@ End
 		Sub Opening()
 		  layout = New TableLayout
 		  layout.Columns = 3
+		  '
+		  'layout.Rows.Add(Row("Button1","Button2","Button3"))
+		  'layout.Rows.Add(Row("Button4","Button5","Button6"))
+		  'layout.Rows.Add(Row("Button7","Button8","Button9"))
+		  '
+		  'Self.Pack(layout)
 		  
-		  layout.Rows.Add(Row("Button1","Button2","Button3"))
-		  layout.Rows.Add(Row("Button4","Button5","Button6"))
-		  layout.Rows.Add(Row("Button7","Button8","Button9"))
+		  Var r As LayoutRow
+		  
+		  r = Row("Button1","Button2","Button3")
+		  r.HeightPercent = 25
+		  layout.Rows.Add(r)
+		  
+		  r = Row("Button4","Button5","Button6")
+		  r.HeightPercent = 50
+		  layout.Rows.Add(r)
+		  
+		  r = Row("Button7","Button8","Button9")
+		  r.HeightPercent = 25
+		  layout.Rows.Add(r)
 		  
 		  Self.Pack(layout)
 		  

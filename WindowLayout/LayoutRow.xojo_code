@@ -11,6 +11,10 @@ Protected Class LayoutRow
 		Cells() As LayoutCell
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		HeightPercent As Integer = 0
+	#tag EndProperty
+
 
 	#tag ViewBehavior
 		#tag ViewProperty
