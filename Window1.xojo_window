@@ -313,9 +313,40 @@ End
 
 #tag WindowCode
 	#tag Event
+		Function MouseDown(x As Integer, y As Integer) As Boolean
+		  If layout <> Nil Then
+		    Return layout.BeginResize(x, y)
+		  End If
+		  Return False
+		End Function
+	#tag EndEvent
+
+	#tag Event
+		Sub MouseDrag(x As Integer, y As Integer)
+		  If layout <> Nil And layout.IsResizing Then
+		    layout.DragResize(x, y)
+		    Self.Pack(layout)
+		    Self.Refresh(False)
+		  End If
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub MouseUp(x As Integer, y As Integer)
+		  If layout <> Nil Then
+		    layout.EndResize
+		  End If
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub Opening()
 		  layout = New TableLayout
 		  layout.Columns = 3
+		  layout.ColumnPercents.Add(20)
+		  layout.ColumnPercents.Add(30)
+		  layout.ColumnPercents.Add(50)
+		  
 		  '
 		  'layout.Rows.Add(Row("Button1","Button2","Button3"))
 		  'layout.Rows.Add(Row("Button4","Button5","Button6"))
